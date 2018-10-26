@@ -175,6 +175,9 @@
     device.iPhone6 = (device.iPhone && limit == 667.0);
     device.iPhone6Plus = (device.iPhone && limit == 736.0);
     device.iPhoneX  = (device.iPhone && limit == 812.0);
+    //iPhone XR and XS Max limit
+    device.iPhoneXRXSMax  = (device.iPhone && limit == 896.0);
+    
 
     return device;
 }
@@ -223,9 +226,11 @@
             imageName = [imageName stringByAppendingString:@"-700"];
         } else if(device.iPhone6) {
             imageName = [imageName stringByAppendingString:@"-800"];
-        } else if(device.iPhone6Plus || device.iPhoneX ) {
+        } else if(device.iPhone6Plus || device.iPhoneX || device.iPhoneXRXSMax) {
             if(device.iPhone6Plus) {
                 imageName = [imageName stringByAppendingString:@"-800"];
+            } else if(device.iPhoneXRXSMax){
+                imageName = [imageName stringByAppendingString:@"-1200"];
             } else {
                 imageName = [imageName stringByAppendingString:@"-1100"];
             }
@@ -244,7 +249,7 @@
     { // does not support landscape
         imageName = [imageName stringByAppendingString:@"-667h"];
     }
-    else if (device.iPhone6Plus || device.iPhoneX)
+    else if (device.iPhone6Plus || device.iPhoneX || device.iPhoneXRXSMax)
     { // supports landscape
         if (isOrientationLocked)
         {
@@ -264,6 +269,8 @@
         }
         if (device.iPhoneX) {
             imageName = [imageName stringByAppendingString:@"-2436h"];
+        } else if(device.iPhoneXRXSMax) {
+            imageName = [imageName stringByAppendingString:@"-2688h"];
         } else {
             imageName = [imageName stringByAppendingString:@"-736h"];
         }
